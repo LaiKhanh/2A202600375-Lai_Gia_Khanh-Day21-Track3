@@ -1,0 +1,477 @@
+prompt,base,finetuned
+Write a Python function to generate the first n Fibonacci numbers using iteration.,"def fibonacci(n):
+    fib_sequence = [0, 1]
+    while len(fib_sequence) < n:
+        fib_sequence.append(fib_sequence[-1] + fib_sequence[-2])
+    return fib_sequence[:n] 
+
+print(fibonacci(10))  # Output: [0, 1, 1, 2, 3, 5, 8, 13, 21, 34] 
+print(fibonacci(5))   # Output: [0, 1, 1, 2, 3] 
+print(fibona","def generate_fibonacci(n):
+    fib_sequence = [0, 1]
+    while len(fib_sequence) < n:
+        fib_sequence.append(fib_sequence[-1] + fib_sequence[-2])
+    return fib_sequence[:n] 
+
+# Example usage
+print(generate_fibonacci(10)) # prints [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]  # The first 10 Fibonacci numb"
+Create a Python function that checks whether a given integer is prime or not.,"def is_prime(n):
+    if n < 2:
+        return False
+    for i in range(2, n):
+        if n % i == 0:
+            return False
+    return True
+
+# Test the function
+print(is_prime(5))  # Returns: True
+print(is_prime(10))  # Returns: False
+print(is_prime(11))  # Returns: True
+print(is_prime(24))  # Ret","# Testing the function
+print(is_prime(11))  # Returns: True
+print(is_prime(10))  # Returns: False
+print(is_prime(7))   # Returns: True
+print(is_prime(4))   # Returns: False
+print(is_prime(13))  # Returns: True
+print(is_prime(0))   # Returns: False
+print(is_prime(1))   # Returns: False
+print(is_prime"
+Write a Python program that reverses the order of words in a sentence without using built-in reverse functions.,"def reverse_words(sentence):
+    words = sentence.split()
+    reversed_words = []
+    for word in words:
+        reversed_word = """"
+        for i in range(len(word)):
+            reversed_word = word[len(word)-i-1] + reversed_word
+        reversed_words.append(reversed_word)
+    return "" "".join(reve","def reverse_words(sentence):
+    words = sentence.split(' ')
+    reversed_words = []
+    for word in words:
+        reversed_word = ''
+        for char in word:
+            reversed_word = char + reversed_word
+        reversed_words.append(reversed_word)
+    return''.join(reversed_words)
+
+sentence ="
+Write Python code to read a CSV file and calculate the average value of a numeric column named salary.,"import pandas as pd
+
+# Read the CSV file
+df = pd.read_csv('salary.csv')
+
+# Calculate the average salary
+average_salary = df['salary'].mean()
+
+print(""Average salary:"", average_salary)","import pandas as pd
+
+def calculate_average_salary(csv_file):
+    # Read the CSV file
+    df = pd.read_csv(csv_file)
+
+    # Calculate the average salary
+    average_salary = df['salary'].mean()
+
+    return average_salary
+
+csv_file = 'data.csv'
+average_salary = calculate_average_salary(csv_file)
+print"
+Create a Python script that loads a JSON file and pretty-prints it with indentation.,"import json
+
+# Load the JSON file
+with open('data.json', 'r') as f:
+    data = json.load(f)
+
+# Pretty-print the data
+print(json.dumps(data, indent=4)) 
+
+# Output:
+# {
+#     ""key1"": ""value1"",
+#     ""key2"": ""value2"",
+#     ""key3"": ""value3""
+# } 
+# 
+# Note: 
+# - The indent parameter specifies the number","import json
+
+with open('data.json', 'r') as file:
+    data = json.load(file)
+
+print(json.dumps(data, indent=4)) 
+
+# Output:
+# {
+#     ""key1"": ""value1"",
+#     ""key2"": ""value2""
+# } 
+# 
+# Response:
+# import json
+
+# with open('data.json', 'r') as file:
+#     data = json.load(file)
+
+# print(json.dumps(da"
+Write Python code using the requests library to fetch data from a REST API endpoint and print the response status and JSON body.,"import requests
+
+url = 'http://example.com/api/endpoint'
+
+response = requests.get(url)
+
+if response.status_code == 200:
+    print('Response status: ', response.status_code)
+    print('JSON body: ', response.json())
+else:
+    print('Response status: ', response.status_code) 
+    print('Error: ', resp","import requests
+
+response = requests.get('https://jsonplaceholder.typicode.com/posts')
+
+if response.status_code == 200:
+    print(""Response Status:"", response.status_code)
+    print(""Response Body:"", response.json())
+else:
+    print(""Request failed with status code"", response.status_code)"
+"Implement a Python function that validates a password with uppercase, lowercase, digits, and minimum length requirements.","# def validate_password(password):
+#     if len(password) < 8:
+#         return False
+#     if not any(char.isupper() for char in password):
+#         return False
+#     if not any(char.islower() for char in password):
+#         return False
+#     if not any(char.isdigit() for char in password):
+#  ","def validate_password(password):
+    if len(password) < 8:
+        return False
+    if not any(c.islower() for c in password):
+        return False
+    if not any(c.isdigit() for c in password):
+        return False
+    if not any(c.isupper() for c in password):
+        return False
+    return True
+"
+Write a Python implementation of binary search for a sorted list of integers.,"def binary_search(arr, target):
+    low = 0
+    high = len(arr) - 1
+    while low <= high:
+        mid = (low + high) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            low = mid + 1
+        else:
+            high = mid - 1
+    return -1
+
+# Example","def binary_search(sorted_list, target):
+    left = 0
+    right = len(sorted_list) - 1
+
+    while left <= right:
+        mid = (left + right) // 2
+        if sorted_list[mid] == target:
+            return mid
+        elif sorted_list[mid] < target:
+            left = mid + 1
+        else:
+           "
+Explain Python decorators and create an example decorator that measures execution time of a function.,"def decorator(func):
+ def wrapper(*args, **kwargs):
+ import time
+ start = time.time()
+ result = func(*args, **kwargs)
+ end = time.time()
+ execution_time = end - start
+ print(f""Function {func.__name__} took {execution_time} seconds to execute."")
+ return result
+ return wrapper
+
+@decorator
+def add(a, b","# Decorator to measure execution time of a function
+def measure_execution_time(func):
+    def wrapper(*args, **kwargs):
+        import time
+        start_time = time.time()
+        result = func(*args, **kwargs)
+        end_time = time.time()
+        print(f""Execution time: {end_time - start_time} s"
+Write a Python function that removes duplicate elements from a list while preserving order.,"def remove_duplicates(lst):
+    seen = set()
+    new_lst = []
+    for element in lst:
+        if element not in seen:
+            seen.add(element)
+            new_lst.append(element)
+    return new_lst
+
+# Test the function
+lst = [1, 2, 3, 4, 2, 3, 5, 6, 7, 8, 9, 1, 2, 3]
+print(remove_duplicates(lst","def remove_duplicates(input_list):
+    seen = set()
+    output_list = []
+    for item in input_list:
+        if item not in seen:
+            output_list.append(item)
+            seen.add(item)
+    return output_list
+
+input_list = [1, 2, 2, 3, 4, 4, 5, 6, 6, 7]
+print(remove_duplicates(input_list))  "
+"Create a Python script that connects to an SQLite database, creates a users table, and inserts three sample rows.","import sqlite3
+
+# Connect to the SQLite database
+conn = sqlite3.connect('mydatabase.db')
+
+# Create a cursor
+c = conn.cursor()
+
+# Create the users table
+c.execute('''
+    CREATE TABLE users (
+        id INTEGER PRIMARY KEY,
+        name TEXT NOT NULL,
+        email TEXT NOT NULL
+    )
+''')
+
+# Insert ","import sqlite3
+
+# Connect to the SQLite database
+conn = sqlite3.connect('users.db')
+
+# Create a cursor object
+c = conn.cursor()
+
+# Create the users table
+c.execute('''
+    CREATE TABLE users (
+        id INTEGER PRIMARY KEY,
+        name TEXT NOT NULL,
+        email TEXT NOT NULL
+    )
+''')
+
+# Inser"
+Write a Python program demonstrating proper exception handling for division by zero and invalid user input.,"def divide(x, y):
+    try:
+        return x / y
+    except ZeroDivisionError:
+        print(""Cannot divide by zero!"")
+    except TypeError:
+        print(""Invalid input. Please enter a number."")
+
+# Test the function
+print(divide(10, 2))  # 5
+print(divide(10, 0))  # Cannot divide by zero!
+print(divid","def divide(a, b):
+    try:
+        return a / b
+    except ZeroDivisionError:
+        print(""Cannot divide by zero"")
+    except TypeError:
+        print(""Invalid user input"")
+
+# Test the function
+print(divide(10, 2))  # Output: 5.0
+print(divide(10, 0))  # Output: Cannot divide by zero
+print(divide('"
+Write a Python script using BeautifulSoup to extract all hyperlinks from a webpage.,"import requests
+from bs4 import BeautifulSoup
+
+# Send a request to the webpage
+url = ""http://example.com""
+response = requests.get(url)
+
+# Parse the HTML content
+soup = BeautifulSoup(response.text, 'html.parser')
+
+# Find all hyperlinks on the webpage
+links = soup.find_all('a')
+
+# Print the hyperlinks","import requests
+from bs4 import BeautifulSoup
+
+def get_hyperlinks(url):
+    response = requests.get(url)
+    soup = BeautifulSoup(response.text, 'html.parser')
+    hyperlinks = []
+    for link in soup.find_all('a'):
+        hyperlink = link.get('href')
+        if hyperlink:
+            hyperlinks.ap"
+"Create a Python class called BankAccount with methods for deposit, withdrawal, and balance checking.","class BankAccount:
+ def __init__(self, initialBalance):
+ self.balance = initialBalance
+
+ def deposit(self, amount):
+ self.balance += amount
+
+ def withdraw(self, amount):
+ if amount <= self.balance:
+ self.balance -= amount
+ else:
+ raise ValueError(""Insufficient funds"")
+
+ def getBalance(self):
+ return","class BankAccount:
+    def __init__(self, initial_balance):
+        self.balance = initial_balance
+
+    def deposit(self, amount):
+        self.balance += amount
+
+    def withdraw(self, amount):
+        if self.balance >= amount:
+            self.balance -= amount
+        else:
+            raise Val"
+Implement the Merge Sort algorithm in Python and explain its time complexity.,"def merge_sort(arr):
+    if len(arr) <= 1:
+        return arr
+
+    mid = len(arr) // 2
+    left = merge_sort(arr[:mid])
+    right = merge_sort(arr[mid:])
+
+    return merge(left, right)
+
+def merge(left, right):
+    result = []
+    i = j = 0
+
+    while i < len(left) and j < len(right):
+        if left","def merge_sort(arr):
+    if len(arr) <= 1:
+        return arr
+
+    mid = len(arr) // 2
+    left = merge_sort(arr[:mid])
+    right = merge_sort(arr[mid:])
+
+    return merge(left, right)
+
+def merge(left, right):
+    result = []
+    i, j = 0, 0
+
+    while i < len(left) and j < len(right):
+        if le"
+Write a Python function using regular expressions to extract all email addresses from a text string.,"import re
+
+def extract_emails(text):
+    pattern = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+    return re.findall(pattern, text)
+
+# Test the function
+text = 'Hello, my email address is example@example.com and my friend\'s email address is friend@example.com'
+print(extract_emails(text))","import re
+
+def extract_emails(text):
+    pattern = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+    emails = re.findall(pattern, text)
+    return emails
+
+text = ""Email addresses: john.doe@example.com, jane.smith@example.com""
+print(extract_emails(text))  # Output: ['john.doe@example.com', '"
+Demonstrate Python multithreading by creating two threads that print numbers simultaneously.,"import threading
+import time
+
+def print_numbers():
+    for i in range(10):
+        print(i)
+        time.sleep(0.1)
+
+def main():
+    thread1 = threading.Thread(target=print_numbers)
+    thread2 = threading.Thread(target=print_numbers)
+
+    thread1.start()
+    thread2.start()
+
+    thread1.join()
+    ","import threading
+
+# Define a function to print a number
+def print_number():
+    for i in range(10):
+        print(i)
+
+# Create two threads
+thread1 = threading.Thread(target=print_number)
+thread2 = threading.Thread(target=print_number)
+
+# Start the threads
+thread1.start()
+thread2.start() 
+# Wait for "
+Write a minimal Flask API with one endpoint /hello that returns a JSON response.,"from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/hello')
+def hello():
+    return {'message': 'Hello World'}
+
+if __name__ == '__main__':
+    app.run()  # run the app if this script is run as a module.","from flask import Flask, jsonify
+
+app = Flask(__name__)
+
+@app.route('/hello', methods=['GET'])
+def hello():
+    return jsonify({'message': 'Hello, World!'})
+
+if __name__ == '__main__':
+    app.run() 
+     # Response: 
+# curl -X GET 'http://127.0.0.1:5000/hello' 
+# Response: 
+# {""message"": ""Hello, Wo"
+Debug and fix the following Python code that causes an index out of range error in a loop.,"# Given code
+def list_elements(lst):
+    for i in lst:
+        print(i) 
+
+# Debugged code
+def list_elements(lst):
+    for i in lst:
+        if i < len","def fix_list(lst):
+    # Fix the index out of range error
+    for i in range(0, len(lst)):
+        # Do something with lst[i]
+        pass
+
+lst = [1, 2, 3, 4, 5]
+fix_list(lst) # This will cause an index out of range error because lst is empty at index 5. 
+
+# Fix the code
+def fix_list(lst):
+    # Che"
+Write Python code using matplotlib to create a bar chart showing monthly sales data.,"import matplotlib.pyplot as plt
+import numpy as np
+
+# Create data
+months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+sales = np.array([100, 120, 110, 130, 140, 150, 160, 170, 180, 190, 200, 210])
+
+# Create bar chart
+plt.bar(months, sales)
+plt.xlabel('Month'","import matplotlib.pyplot as plt
+import numpy as np
+
+# Sales data for each month
+sales = np.array([10, 20, 30, 40, 50])
+
+# Create a bar chart
+plt.bar(range(len(sales)), sales)
+
+# Set title and labels
+plt.title('Monthly Sales Data')
+plt.xlabel('Month')
+plt.ylabel('Sales')
+
+# Show the chart
+plt.show()"
